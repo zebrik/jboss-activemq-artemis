@@ -17,6 +17,7 @@
 package org.apache.activemq.artemis.core.server.impl;
 
 import org.apache.activemq.artemis.api.core.ActiveMQException;
+import org.apache.activemq.artemis.api.core.TransportConfiguration;
 import org.apache.activemq.artemis.core.config.Configuration;
 import org.apache.activemq.artemis.core.paging.PagingManager;
 import org.apache.activemq.artemis.core.persistence.StorageManager;
@@ -191,6 +192,14 @@ public final class SharedStoreBackupActivation extends Activation {
    }
 
    private class FailbackChecker implements Runnable {
+
+      BackupTopologyListener backupListener;
+
+      FailbackChecker() {
+         TransportConfiguration connector = activeMQServer.getClusterManager().getDefaultConnection(null).getConnector();
+         backupListener = new BackupTopologyListener(activeMQServer.getNodeID().toString(), connector);
+         activeMQServer.getClusterManager().getDefaultConnection(null).addClusterTopologyListener(backupListener);
+      }
 
       private boolean restarting = false;
 
