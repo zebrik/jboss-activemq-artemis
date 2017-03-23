@@ -37,6 +37,11 @@
 
        <!-- Other config -->
 
+       <address-settings>
+          <address-setting match="#">
+             <max-size-bytes-reject-threshold></max-size-bytes-reject-threshold>
+          </address-setting>
+       </address-settings>
        <security-settings>
            <!--security for example queue-->
            <security-setting match="jms.queue.exampleQueue">
