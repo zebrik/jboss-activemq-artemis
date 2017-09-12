@@ -1,6 +1,6 @@
 # ActiveMQ Artemis
 
-This file describes some minimum 'stuff one needs to know' to get started coding in this project.
+This file describes some minimum 'stuff one needs to know' to get started coding in this project
 
 ## Source
 
@@ -52,5 +52,4 @@ If you wish to generate the report for CCV dependencies, you may run it with the
 
 The output will be under ./target/dependency-check-report.html **for each** sub-module.
 
-# TEST
-
+TEST
